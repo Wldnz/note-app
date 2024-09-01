@@ -14,3 +14,37 @@
             <p>Isi : Max 20 Char</p>
             <p>Last Update : 30 Agustus 2024</p>
         </div>
+
+    modal : 
+         <div class="modal">
+        <h2>Grammar Check</h2>
+       <textarea class="description" readonly></textarea>
+        <div class="button">
+            <button type="submit" class="btn btn-replace">Replace</button>
+            <button type="submit" class="btn btn-replace-save">Replace & Save</button>
+            <button type="submit" class="btn btn-close-modal">CLOSE</button>
+        </div>
+    </div>  
+
+
+    new sideRight isi;
+     <input type="text" placeholder="Title.." class="note-title">
+            <textarea placeholder="Description" class="description"></textarea>
+            <div class="button">
+                <button type="submit" class="btn btn-save">Save Changes</button>
+                <button type="submit" class="btn btn-check">Check All Grammar</button>
+                <button type="submit" class="btn btn-discard">Discard Changes</button>
+                <button type="submit" class="btn btn-close">Close Note</button>
+            </div>
+
+            new side left isi :
+             <button type="submit" class="btn btn-add">Add Note</button>
+
+            <div class="note-list">
+                <div class="note">
+                    <h2>Title Goes here!</h2>
+                    <p>Description Goes Here</p>
+                    <p>Last Date Goes Here</p>
+                    <div class="pointer" data-id=""></div>
+                </div>
+            </div>

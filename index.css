@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    /* font-weight: 600; */
+    font-style: normal;
+    color: white;
+}
+
+:root{
+    --minWidth : 100vw;
+    --minHeight : 100vh;
+}
+
+body{
+    background: rgb(2,0,36);
+    background: linear-gradient(365deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%);
+    background-repeat: no-repeat;
+
+    color: white;
+    width: var(--minWidth);
+    min-height: var(--minHeight);
+
+  
+}
+
+.root{
+    width: var(--minWidth);
+    min-height: var(--minHeight);
+
+    /* display */
+    display: flex;
+    gap: 10px;
+    
+}
+
+.sideLeft,
+.sideRight{
+    border: 1px solid rgba(255,255,255, .3);
+    padding: 5px;
+}
+
+.sideLeft{
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+    align-items: center;
+    width: 300px;
+    
+}
+
+.sideLeft > :nth-child(1){
+    width: 250px;
+    font-size: 15px;
+    background-color: rgba(0,0,255,.4);
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+}
+
+.note-list{
+    /* background-color: red; */
+    width: 100%;
+    height: 434px;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+
+
+    /* overflow */
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.note-list::-webkit-scrollbar{
+    display: none;
+}
+
+.note{
+    width: 90%;
+    border-radius: 5px;
+    background-color: rgba(0,0,255,.4);
+    padding: 3px 5px;
+    display: flex;
+    flex-direction: column;
+
+    /* position */
+    position: relative;
+
+
+}
+
+.note > :nth-child(1){
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.note > :nth-child(2){
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.note > :where(:nth-child(2),:nth-child(3)){
+    font-size: 11px;
+}
+
+.note > :last-child{
+    width: 100%;
+    height: 100%;
+
+    background-color: transparent;
+    border-radius: 5px;
+
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+.sideRight{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sideRight > :where(:nth-child(1),:nth-child(2)){
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    /* height: 60px; */
+}
+/* 
+.sideRight > :where(:nth-child(1),:nth-child(2)):focus{
+    outline: none;
+} */
+.sideRight > :where(:nth-child(1),:nth-child(2))::placeholder{
+    font-size: 18px;
+}
+
+.sideRight > :nth-child(1){
+    font-size: 25px;
+}
+
+.sideRight > :nth-child(2){
+    resize: none;
+    height: 65vh;
+}
+
+.button{
+    /* width: 80%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn{
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgba(0,0,255,.4);
+    border: none;
+    cursor: pointer;
+}
+
+.modal{
+
+    /* position */
+
+    position: absolute;
+    top: 20vh;
+    left: 60vh;
+    padding: 10px;
+    width: 800px;
+    background-color: rgba(0,0,255,.1);
+    border-radius: 3px;
+}
+
+.modal > :where(:nth-child(1),:nth-child(2)) {
+    border-bottom: 1px solid white;
+}
+
+.modal > :nth-child(2){
+    width: 100%;
+    height: 250px;
+    resize: none;
+    background-color: transparent;
+}
+
+/* .modal > :nth-child(2):focus{
+    outline: none;
+} */
+
+textarea::-webkit-scrollbar{
+    display: none;
+}
+
+.modal .btn{
+    width: 200px;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+}

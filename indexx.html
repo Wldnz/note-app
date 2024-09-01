@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note App</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+    
+   <div class="root">
+        <div class="sideLeft">
+
+            <button type="submit" class="addNote">Add Note</button>
+
+            <div class="note-list">
+                
+            </div>
+
+        </div>
+        <div class="sideRight">
+         
+        </div>
+   </div>
+
+   <script>
+
+        if(localStorage.length >= 1){
+            for(let i =0; i < localStorage.length; i++){
+                const {id,title,desc} = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                console.log()
+                document.querySelector('.note-list').innerHTML += `
+                <div class="note">
+                    <p>Title : ${title}</p>
+                    <p>Description : ${desc}</p>
+                    <p>Last Update : 30 Agustus 2024</p>
+                    <div data-id=${id}></div>
+                </div>
+                `
+            }
+            
+
+            document.querySelectorAll('.note').forEach((value) => {
+                value.lastElementChild.onclick = (e) => {
+                    console.log(e.target)
+                    const {id,title,desc} = JSON.parse(localStorage.getItem(e.target.dataset.id));
+                    const newTemplateFormNote = `
+                    <input type="text" placeholder="Title." value="${title}">
+                    <textarea placeholder="Description here.">${desc}</textarea>
+                    <div class="button">
+                        <button type="submit" class="btn btn-save">Save Changes</button>
+                        <button type="submit" class="btn btn-check-all">Check All Grammar</button>
+                        <button type="submit" class="btn btn-discard">Discard Changes</button>
+                        <button type="submit" class="btn btn-close">Close Note</button>
+                    </div>
+                    `
+                    document.querySelector('.sideRight').innerHTML = newTemplateFormNote;
+                    setEventListener();
+                }
+            })
+
+        }
+
+        const templateFormNote = `
+            <input type="text" placeholder="Title.">
+            <textarea placeholder="Description here."></textarea>
+            <div class="button">
+                <button type="submit" class="btn btn-save">Save Changes</button>
+                <button type="submit" class="btn btn-check-all">Check All Grammar</button>
+                <button type="submit" class="btn btn-discard">Discard Changes</button>
+                <button type="submit" class="btn btn-close">Close Note</button>
+            </div>
+       `
+        const addNoteButton = document.querySelector('.addNote');
+        addNoteButton.onclick = () => {
+            document.querySelector('.sideRight').innerHTML = templateFormNote;
+            setEventListener();
+        }
+
+        function setEventListener(){
+            document.querySelector('.btn-save').addEventListener('click',(e) => {
+                console.log('data Berhasil di tambahkan')
+                const sideDiv = document.querySelector('.sideRight');
+                const titleInput = sideDiv.children[0].value;
+                const DescInput = sideDiv.children[1].value;
+                const data = {
+                    id : Date.now(),
+                    title : titleInput,
+                    desc : DescInput,
+                }
+                // ubah dulu datanya jadi string...
+                localStorage.setItem(data.id,JSON.stringify(data));
+                // lalu dapatkan datanya menggunakan parse
+                console.log(JSON.parse(localStorage.getItem(data.id)))
+            })
+            document.querySelector('.btn-close').addEventListener('click',(e) => {
+                document.querySelector('.sideRight').innerHTML = "";
+            })
+        }
+
+   </script>
+
+</body>
+</html>

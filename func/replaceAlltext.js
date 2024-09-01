@@ -1,18 +1,20 @@
 
 
-function replaceText({sentece,replacement,start,end}){
+export default function replaceText({sentence,replacement,start,end}){
 
     let newText = "" ;
 
 
-    for(let i = 0; i = sentece.length; i++){
-        
-        if(i == start && i == end){
-           if(!newText.includes(replacement)){
-               newText += replacement +  " ";
-           }
+    let j = 0;
+    for(let i = 0; i < sentence.length; i++){
+        if(i >= start && i <= end){
+            newText += replacement.charAt(j);
+            j++;
+            if(i == end){
+                newText += " ";
+            }
         }else{
-            newText += text.charAt(i);
+            newText += sentence.charAt(i);
         }
         
     }
